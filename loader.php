@@ -7,3 +7,10 @@
  * be loaded thru this file.
  */
 
+require_once "lib/php-fig-log/Psr/Log/AbstractLogger.php";
+require_once "lib/php-fig-log/Psr/Log/InvalidArgumentException.php";
+require_once "lib/php-fig-log/Psr/Log/LogLevel.php";
+require_once "lib/php-fig-log/Psr/Log/LoggerAwareInterface.php";
+require_once "lib/php-fig-log/Psr/Log/LoggerAwareTrait.php";
+require_once "lib/php-fig-log/Psr/Log/LoggerTrait.php";
+require_once "lib/php-fig-log/Psr/Log/NullLogger.php";
