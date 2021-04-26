@@ -1,0 +1,71 @@
+#
+# Hide files that should not be added to version control 
+#
+#===============================================================================
+
+
+#
+# Configuration files
+#
+*.env
+config.php
+
+
+#
+# Editor files
+#
+.*.swp
+.idea
+
+
+#
+# Generated content
+#
+phpdocs
+vendor
+
+
+#
+# Packaged files
+#
+*.7z
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.dmg
+
+
+#
+# Generic files
+#
+*.bak
+temp.txt
+temp.php
+phpinfo.php
+
+
+#
+# Log files
+#
+*.log
+
+
+#
+# OS X specific files
+#
+.DS_Store
+.Trashes
+
+
+#
+# Sass related files.
+#
+*.sass-cache*
+*.css.map
+
+
