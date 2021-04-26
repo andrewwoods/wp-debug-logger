@@ -12,4 +12,4 @@
  * @package         Wp_Debug_Logger
  */
 
-// Your code starts here.
+require_once "loader.php";
