@@ -35,6 +35,23 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 
 
 
+### Logging Levels
+
+There are 8 logging levels available, [defined by RFC
+5424](https://tools.ietf.org/html/rfc5424). The levels specified in
+order from the most severe to the least severe:
+
+* **Emergency**: system is unusable
+* **Alert**: action must be taken immediately
+* **Critical**: critical conditions
+* **Error**: error conditions
+* **Warning**: warning conditions
+* **Notice**: normal but significant condition
+* **Info**: informational messages
+* **Debug**: debug-level messages
+
+
+
 ## Resources
 
 * [Semantic Versioning](http://semver.org)
