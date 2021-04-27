@@ -17,16 +17,6 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 
 
 
-## Ideas for sections/pages
-
-* Features
-* Language Translations 
-* Frequently Asked Questions (FAQ)
-* Screenshots
-* Submit Issues
-
-
-
 ## Installation
 
 1. Upload the `wp-debug-logger` folder to the `/wp-content/plugins/` directory
@@ -151,6 +141,16 @@ Log::debug(
 	[ 'username' => 'awoods' ]
 );
 ```
+
+
+
+## Ideas for sections/pages
+
+* Features
+* Language Translations
+* Frequently Asked Questions (FAQ)
+* Screenshots
+* Submit Issues
 
 
 
