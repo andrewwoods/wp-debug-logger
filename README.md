@@ -33,6 +33,30 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
+### Enable Debugging
+
+In order to enable standard debugging in WordPress, you'll need to add
+some settings to your `wp-content/wp-config.php` file.
+
+```php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'WP_DEBUG_LOG', true );
+
+// For good measure, this will hide errors from being displayed on-screen
+@ini_set('display_errors', 0);
+```
+
+In your **development** environment, you may choose to set
+`WP_DEBUG_DISPLAY` to `true`, so the error messages show in your
+browser. However, I **strongly recommend** that you do not change it,
+for your *production* environment, These three lines can be placed
+anywhere above the line.
+
+```
+/* That’s all, stop editing! Happy blogging. */
+```
+
 
 
 ## Logging Levels
