@@ -21,7 +21,6 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 
 1. Upload the `wp-debug-logger` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
 ### Enable Debugging
 
