@@ -3,11 +3,11 @@
 
 __Modernizing Logging For WordPress__
 
-As PHP moves forward, so must WordPress. THis plugin helps WordPress use
-the tools of modern PHP. Monolog - PHP's most popular logging package
-- is a composer package. Since WordPress doesn't currently have a
-universal way to support composer,  this WordPress plugin is meant to
-start bridging the gap, 
+As PHP moves forward, so must WordPress. This plugin helps WordPress use
+the tools of modern PHP. Monolog — PHP's most popular logging package —
+is a composer package. Since WordPress doesn't currently have a
+universal way to support composer, this WordPress plugin is meant to
+start bridging the gap.
 
 
 
