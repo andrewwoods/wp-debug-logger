@@ -35,7 +35,7 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 
 
 
-### Logging Levels
+## Logging Levels
 
 There are 8 logging levels available, [defined by RFC
 5424](https://tools.ietf.org/html/rfc5424). The levels specified in
@@ -49,6 +49,84 @@ order from the most severe to the least severe:
 * **Notice**: normal but significant condition
 * **Info**: informational messages
 * **Debug**: debug-level messages
+
+
+
+## Example Usage
+
+The work of writing to the `wp-content/debug.log` file is done by the
+Logger class. It determines the format of the message, and makes use of
+the `error_log()` function PHP provides to do the writing. In this way,
+this plugin acts like syntactic sugar in a more modern PHP way.
+
+Each of the logging levels, has a corresponding method in the Logger
+class. Here's how to use the Logger class from your code.
+
+```php
+$logger = new \WP_Debug_Logger\Logger();
+$logger->error('The SQL query returned zero rows');
+````
+
+it's recommended that you replace fully namespaced class names with an
+import at the top of your file.
+
+```php
+use WP_Debug_Logger\Logger;
+
+// ... your code ...
+
+$logger = new Logger();
+$logger->error('The SQL query returned zero rows');
+````
+
+### Static Log Methods
+
+If you have a Laravel background, you may be used to using Laravel's Log
+facade. While there is no service container to access, I did create a
+`Log` class with static methods to wrap the Logger class. So you can
+change the above example to read as follows.
+
+```php
+use WP_Debug_Logger\Log;
+
+// ... your code ...
+
+Log::error('The SQL query returned zero rows');
+````
+
+Here's the list of all static methods for the Log class
+
+```php
+Log::emergency( 'This is an emergency message' );
+Log::alert( 'This is an alert message' );
+Log::critical( 'This is a critical message' );
+Log::error( 'This is an error message' );
+Log::warning( 'This is a warning message' );
+Log::notice( 'This is a notice message' );
+Log::info( 'This is a info message' );
+Log::debug( 'This is a debug message' );
+````
+
+### Passing Data to the Log
+
+Sometimes writing a simple message isn't enough. Wouldn't it be nice if
+you could include some data? Then you can make sure that the data has
+the content you think it does. If you're on your local environment,
+using the step debugging tools in XDebug will give you superior results.
+On a server though, it's useful to write the data to your log.
+
+**Please do not log passwords, secret keys, or other sensitive data.**
+
+Each of these methods, accepts an associative array as an optional
+second parameter. The keys of the array are used to identify replacement
+strings, and the value will be interpolated.
+
+```php
+Log::debug(
+	'Success! The user "{username}" logged in!',
+	[ 'username' => 'awoods' ]
+);
+```
 
 
 
