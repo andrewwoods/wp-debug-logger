@@ -16,3 +16,4 @@ require_once "lib/php-fig-log/Psr/Log/LoggerTrait.php";
 require_once "lib/php-fig-log/Psr/Log/NullLogger.php";
 
 require_once "src/class-logger.php";
+require_once "src/class-log.php";
