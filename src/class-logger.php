@@ -6,6 +6,17 @@ use Psr\Log\LogLevel;
 
 class Logger implements \Psr\Log\LoggerInterface {
 
+	protected $levels = [
+		LogLevel::EMERGENCY => 0,
+		LogLevel::ALERT => 1,
+		LogLevel::CRITICAL => 2,
+		LogLevel::ERROR => 3,
+		LogLevel::WARNING => 4,
+		LogLevel::NOTICE => 5,
+		LogLevel::INFO => 6,
+		LogLevel::DEBUG => 7,
+	];
+
 	/**
 	 * Interpolates context values into the message placeholders.
 	 *
@@ -97,10 +108,51 @@ class Logger implements \Psr\Log\LoggerInterface {
 			return; // Don't allow writing when WP_DEBUG_LOG is false
 		}
 
-		$content = date('Y-m-d H:i:s' ) . ' ';
-		$content .= strtoupper( $level ) . ': ';
-		$content .= $this->interpolate( $message, $context );
+		if ( $this->meets_minimum_level( $level, WP_DEBUG_MINIMUM_LEVEL ) ) {
+			$content = date('Y-m-d H:i:s' ) . ' ';
+			$content .= strtoupper( $level ) . ': ';
+			$content .= $this->interpolate( $message, $context );
 
-		error_log( $content );
+			error_log( $content );
+		}
+	}
+
+	/**
+	 * Determine if the current level meets the minimum *severity* level
+	 *
+	 * For a minimum level of "error"
+	 *
+	 * - a current level of "critical" does match, because it's more severe
+	 * - a current level of "error" does match, because it's equally severe
+	 * - a current level of "notice" does not match, because it's less severe
+	 *
+	 * @param string $current_level
+	 * @param string $minimum_level
+	 *
+	 * @return bool
+	 */
+	public function meets_minimum_level( string $current_level, string $minimum_level ) : bool {
+
+		// The more severe levels have lower numeric values
+		if ($this->get_numeric_level( $current_level ) <= $this->get_numeric_level( $minimum_level)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Return the numeric level for a given level name
+	 *
+	 * @param string $level
+	 *
+	 * @return int
+	 */
+	public function get_numeric_level( string $level ) : int {
+		if ( isset( $this->levels[ $level ] ) ) {
+			return $this->levels[ $level ];
+		}
+
+		return $this->levels[ LogLevel::ERROR ];
 	}
 }
