@@ -158,11 +158,19 @@ Log::debug(
 
 
 
+## Frequently Asked Questions
+
+### Why not just use the error_log function?
+
+You still can. However, the plugin will add value to your logging
+efforts. Using this logger will add structure io the debug.log file,
+*and* give you a modern PHP interface to control the amount of
+logging in your website. Using a method with the logging level indicates the importance of the message.
+
 ## Ideas for sections/pages
 
 * Features
 * Language Translations
-* Frequently Asked Questions (FAQ)
 * Screenshots
 * Submit Issues
 
