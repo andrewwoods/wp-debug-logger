@@ -13,3 +13,5 @@
  */
 
 require_once "loader.php";
+
+add_action( 'plugins_loaded', 'WP_Debug_Logger\set_default_constants' );
