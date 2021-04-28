@@ -55,6 +55,7 @@ amount of logging in your website.
 
 = 0.1.0 =
 
-* Initial Version
-
-
+* Import PSR-3 from PHP FIG into `lib` directory
+* Create Logger class to write log
+* Create Log class to statically interact with Logger class
+* Add usage instructions and logging levels
