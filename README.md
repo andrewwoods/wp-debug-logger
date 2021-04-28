@@ -20,7 +20,8 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 ## Installation
 
 1. Upload the `wp-debug-logger` folder to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Enable Debugging in your `wp-config.php`
 
 ### Enable Debugging
 
@@ -31,10 +32,24 @@ some settings to your `wp-content/wp-config.php` file.
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_MINIMUM_LEVEL', 'debug' );
 
 // For good measure, this will hide errors from being displayed on-screen
 @ini_set('display_errors', 0);
 ```
+
+#### Minimum Level
+
+`WP_DEBUG_MINIMUM_LEVEL` is a new constant that determines the minimum
+severity level you wish to write to your `wp-content/debug.log` file. In
+your *development* environment, I recommend using `debug` so you can see
+all the errors being written. For your *production* environment, I'd
+recommend the `error` level, so you can capture all the significant
+problems. Here are the values to use: **emergency, alert, critical,
+error, warning, notice, info, debug**. Note: they're all lowercase, as
+the value is case-sensitive.
+
+#### Displaying Errors
 
 In your **development** environment, you may choose to set
 `WP_DEBUG_DISPLAY` to `true`, so the error messages show in your
