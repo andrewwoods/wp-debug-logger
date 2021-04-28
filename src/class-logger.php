@@ -89,6 +89,14 @@ class Logger implements \Psr\Log\LoggerInterface {
 	 * @inheritDoc
 	 */
 	public function log( $level, $message, array $context = array() ) {
+		if ( ! WP_DEBUG ) {
+			return; // Don't allow writing when WP_DEBUG is false
+		}
+
+		if ( ! WP_DEBUG_LOG ) {
+			return; // Don't allow writing when WP_DEBUG_LOG is false
+		}
+
 		$content = date('Y-m-d H:i:s' ) . ' ';
 		$content .= strtoupper( $level ) . ': ';
 		$content .= $this->interpolate( $message, $context );
