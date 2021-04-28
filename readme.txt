@@ -1,7 +1,6 @@
 === WP Debug Logger ===
 Contributors: awoods
-Donate link: https://example.com/
-Tags: comments, spam
+Tags: psr-3, logs, logging, debug, monolog
 Requires at least: 5.7
 Tested up to: 5.7
 Requires PHP: 7.4
@@ -29,7 +28,18 @@ e.g.
 
 1. Upload the `wp-debug-logger` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Enable Debugging in your `wp-config.php`
+
+```php
+// in your wp-config.php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_MINIMUM_LEVEL', 'debug' );
+
+// For good measure, this will hide errors from being displayed on-screen
+@ini_set('display_errors', 0);
+```
 
 == Frequently Asked Questions ==
 
