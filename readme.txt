@@ -4,7 +4,7 @@ Tags: psr-3, logs, logging, debug, monolog
 Requires at least: 5.7
 Tested up to: 5.7
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,11 @@ management systems.
 
 
 == Changelog ==
+
+= 0.2.0 =
+
+* Add `Log::print()` and `Log::dump()` methods
+* Improve documentation
 
 = 0.1.0 =
 
