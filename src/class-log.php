@@ -96,4 +96,19 @@ class Log {
 		$logger = new Logger();
 		$logger->debug( $message . '=' . $data );
 	}
+
+	/**
+	 * Write var_dump data to the log using the debug level
+	 *
+	 * @param string $message
+	 * @param $value
+	 */
+	public static function dump( string $message, $value ) {
+		ob_start();
+		var_dump( $value ); // since var_dump() only outputs, it has to be buffered
+		$data = ob_get_clean();
+
+		$logger = new Logger();
+		$logger->debug( $message . "=\n" . $data );
+	}
 }

@@ -173,6 +173,20 @@ Log::print(
 ```
 
 
+The `var_dump()` is related to `print_r()` in purpose, in that you can
+see how data is structured. However, it also includes length
+information. the `dump()` method will write the `var_dump()` data to the
+log as a `debug` level message. Just like the `print` method, I don't
+recommend leaving this in your code - since it makes your log less
+scannable.
+
+```php
+Log::dump(
+	'your message here',
+	$your_data
+);
+```
+
 
 ## Frequently Asked Questions
 
