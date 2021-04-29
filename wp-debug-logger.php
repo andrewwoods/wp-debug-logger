@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     WP Debug Logger
+ * Plugin Name:     Debug Logger
  * Plugin URI:      https://github.com/andrewwoods/wp-debug-logger
  * Description:     Provide a PSR-3 compatible logger for WordPress
  * Author:          awoods

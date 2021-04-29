@@ -1,4 +1,4 @@
-=== WP Debug Logger ===
+=== Debug Logger ===
 Contributors: awoods
 Tags: psr-3, logs, logging, debug, monolog
 Requires at least: 5.7
