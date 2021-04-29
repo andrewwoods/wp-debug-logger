@@ -3,6 +3,7 @@
 namespace WP_Debug_Logger;
 
 use Psr\Log\LogLevel;
+use WP_Error;
 
 class Logger implements \Psr\Log\LoggerInterface {
 
@@ -154,5 +155,26 @@ class Logger implements \Psr\Log\LoggerInterface {
 		}
 
 		return $this->levels[ LogLevel::ERROR ];
+	}
+
+	/**
+	 * Extract all the messages from a WP_Error object
+	 *
+	 * @param WP_Error $wp_error
+	 *
+	 * @return string
+	 */
+	public function get_errors( WP_Error $wp_error ) {
+		$errors = '';
+		if ($wp_error->has_errors()) {
+			error_log('Yup! Has errors' );
+			foreach ($wp_error->get_error_codes() as $error_code ){
+				$messages = $wp_error->get_error_messages( $error_code );
+				$message = implode('; ', $messages );
+				$errors .= "Code {$error_code}: {$message}\n";
+			}
+		}
+
+		return $errors;
 	}
 }
