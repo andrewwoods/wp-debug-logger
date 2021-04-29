@@ -83,4 +83,17 @@ class Log {
 		$logger = new Logger();
 		$logger->debug($message, $context);
 	}
+
+	/**
+	 * Write print_r data to the log using the debug level
+	 *
+	 * @param string $message
+	 * @param $value
+	 */
+	public static function print( string $message, $value ) {
+		$data = print_r( $value, true );
+
+		$logger = new Logger();
+		$logger->debug( $message . '=' . $data );
+	}
 }

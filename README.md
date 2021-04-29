@@ -156,6 +156,22 @@ Log::debug(
 );
 ```
 
+## Helper Methods
+
+Occasionally, you need to use `print_r()` on a piece of data, in order
+to see how it's structured. To make it easy for you, the `print()`
+method will write the `print_r()` data to the log as a `debug` level
+message. It's good for examining the structure of a piece of data, but i
+don't recommend leaving this in your code - since it makes your log less
+scannable.
+
+```php
+Log::print(
+	'your message here',
+	$your_data
+);
+```
+
 
 
 ## Frequently Asked Questions
