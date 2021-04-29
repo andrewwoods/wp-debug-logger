@@ -7,7 +7,9 @@ As PHP moves forward, so must WordPress. This plugin helps WordPress use
 the tools of modern PHP. Monolog — PHP's most popular logging package —
 is a composer package. Since WordPress doesn't currently have a
 universal way to support composer, this WordPress plugin is meant to
-start bridging the gap.
+start bridging the gap. This logger is
+[PSR-3](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md)
+compliant, a PHP standard which Monolog also uses.
 
 
 
@@ -26,7 +28,7 @@ The current version is 0.1.0. This project uses [semantic versioning](http://sem
 ### Enable Debugging
 
 In order to enable standard debugging in WordPress, you'll need to add
-some settings to your `wp-content/wp-config.php` file.
+some settings to your `wp-config.php` file.
 
 ```php
 define( 'WP_DEBUG', true );
@@ -54,7 +56,7 @@ the value is case-sensitive.
 In your **development** environment, you may choose to set
 `WP_DEBUG_DISPLAY` to `true`, so the error messages show in your
 browser. However, I **strongly recommend** that you do not change it,
-for your *production* environment, These three lines can be placed
+for your *production* environment. These settings can be placed
 anywhere above the line.
 
 ```
@@ -175,7 +177,7 @@ Log::print(
 
 The `var_dump()` is related to `print_r()` in purpose, in that you can
 see how data is structured. However, it also includes length
-information. the `dump()` method will write the `var_dump()` data to the
+information. The `dump()` method will write the `var_dump()` data to the
 log as a `debug` level message. Just like the `print` method, I don't
 recommend leaving this in your code - since it makes your log less
 scannable.
@@ -194,8 +196,11 @@ Log::dump(
 
 You still can. However, the plugin will add value to your logging
 efforts. Using this logger will add structure io the debug.log file,
-*and* give you a modern PHP interface to control the amount of
-logging in your website. Using a method with the logging level indicates the importance of the message.
+*and* give you a modern PHP interface to control the amount of logging
+in your website. Using a method with the logging level indicates the
+severity of the message.
+
+
 
 ## Ideas for sections/pages
 
@@ -207,6 +212,9 @@ logging in your website. Using a method with the logging level indicates the imp
 
 
 ## Resources
+
+* [PSR List](https://github.com/php-fig/fig-standards/blob/master/index.md)
+* [PSR-3](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md)
 
 * [Semantic Versioning](http://semver.org)
 * [GitHub Markdown](https://help.github.com/categories/writing-on-github/)
