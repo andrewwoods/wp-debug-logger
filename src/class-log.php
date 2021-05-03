@@ -2,6 +2,9 @@
 
 namespace WP_Debug_Logger;
 
+use Psr\Log\InvalidArgumentException;
+use WP_Error;
+
 /**
  * Class Log
  *
@@ -110,5 +113,26 @@ class Log {
 
 		$logger = new Logger();
 		$logger->debug( $message . "=\n" . $data );
+	}
+
+	/**
+	 * Write the codes and messages in a WP_Error object to the log using the specified level
+	 *
+	 * @param string $level
+	 * @param string $message
+	 * @param WP_Error $wp_error
+	 *
+	 * @return void
+	 *
+	 * @throws InvalidArgumentException
+	 */
+	public static function wp_error( string $level, string $message, WP_Error $wp_error ) {
+		$logger = new Logger();
+
+		if ( ! $logger->has_level( $level ) ) {
+			throw new InvalidArgumentException( "The level your requested '{$level}' is not valid" );
+		}
+
+		$logger->log_wp_error( $level, $message, $wp_error );
 	}
 }

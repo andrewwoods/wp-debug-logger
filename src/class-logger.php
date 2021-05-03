@@ -3,6 +3,7 @@
 namespace WP_Debug_Logger;
 
 use Psr\Log\LogLevel;
+use WP_Error;
 
 class Logger implements \Psr\Log\LoggerInterface {
 
@@ -16,6 +17,17 @@ class Logger implements \Psr\Log\LoggerInterface {
 		LogLevel::INFO => 6,
 		LogLevel::DEBUG => 7,
 	];
+
+	/**
+	 * Determine if a level exists
+	 *
+	 * @param string $level
+	 *
+	 * @return bool
+	 */
+	public function has_level( string $level ) : bool {
+		return isset( $this->levels[ $level ] );
+	}
 
 	/**
 	 * Interpolates context values into the message placeholders.
@@ -117,6 +129,26 @@ class Logger implements \Psr\Log\LoggerInterface {
 		}
 	}
 
+	public function log_wp_error( $level, $message, $error ) {
+
+		if ( ! WP_DEBUG ) {
+			return; // Don't allow writing when WP_DEBUG is false
+		}
+
+		if ( ! WP_DEBUG_LOG ) {
+			return; // Don't allow writing when WP_DEBUG_LOG is false
+		}
+
+		if ( $this->meets_minimum_level( $level, WP_DEBUG_MINIMUM_LEVEL ) ) {
+			$content = date('Y-m-d H:i:s' ) . ' ';
+			$content .= strtoupper( $level ) . ': ';
+			$content .= "{$message}:\n";
+			$content .= $this->get_errors( $error );
+
+			error_log( $content );
+		}
+	}
+
 	/**
 	 * Determine if the current level meets the minimum *severity* level
 	 *
@@ -154,5 +186,26 @@ class Logger implements \Psr\Log\LoggerInterface {
 		}
 
 		return $this->levels[ LogLevel::ERROR ];
+	}
+
+	/**
+	 * Extract all the messages from a WP_Error object
+	 *
+	 * @param WP_Error $wp_error
+	 *
+	 * @return string
+	 */
+	public function get_errors( WP_Error $wp_error ) {
+		$errors = '';
+		if ($wp_error->has_errors()) {
+			error_log('Yup! Has errors' );
+			foreach ($wp_error->get_error_codes() as $error_code ){
+				$messages = $wp_error->get_error_messages( $error_code );
+				$message = implode('; ', $messages );
+				$errors .= "Code {$error_code}: {$message}\n";
+			}
+		}
+
+		return $errors;
 	}
 }
