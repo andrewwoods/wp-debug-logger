@@ -189,6 +189,28 @@ Log::dump(
 );
 ```
 
+One of the key features of the WordPress error model, is the WP_Error class. There are some functions that will return an WP_Error object, instead of false, like many PHP functions. Now you have an easy way to log these objects. Here's how you'd call it.
+
+```php
+Log::wp_error(
+	$error_level,
+	$log_message,
+	$your_data
+);
+```
+
+The `$error_level` **must** be one of these values: `emergency, alert, critical, error, warning, notice, info, debug`. In the event you don't, an exception will be thrown.
+
+```php
+if ( is_wp_error( $result ) ) {
+	Log::wp_error(
+		'critical',
+		'This very important query has a severe problem',
+		$result
+	);
+}
+```
+
 
 ## Frequently Asked Questions
 
