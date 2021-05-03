@@ -115,15 +115,16 @@ class Log {
 	}
 
 	/**
-	 * Write var_dump data to the log using the debug level
+	 * Write the codes and messages in a WP_Error object to the log using the specified level
 	 *
 	 * @param string $message
 	 * @param WP_Error $wp_error
+	 *
+	 * @return void
 	 */
 	public static function wp_error( string $message, WP_Error $wp_error ) {
 		$logger = new Logger();
-		// @todo: add call to collate
-		$data = $logger->get_errors( $wp_error );
-		$logger->debug( $message . "=\n" . $data );
+
+		$logger->log_wp_error( 'debug', $message, $wp_error );
 	}
 }

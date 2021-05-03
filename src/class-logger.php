@@ -118,6 +118,26 @@ class Logger implements \Psr\Log\LoggerInterface {
 		}
 	}
 
+	public function log_wp_error( $level, $message, $error ) {
+
+		if ( ! WP_DEBUG ) {
+			return; // Don't allow writing when WP_DEBUG is false
+		}
+
+		if ( ! WP_DEBUG_LOG ) {
+			return; // Don't allow writing when WP_DEBUG_LOG is false
+		}
+
+		if ( $this->meets_minimum_level( $level, WP_DEBUG_MINIMUM_LEVEL ) ) {
+			$content = date('Y-m-d H:i:s' ) . ' ';
+			$content .= strtoupper( $level ) . ': ';
+			$content .= "{$message}:\n";
+			$content .= $this->get_errors( $error );
+
+			error_log( $content );
+		}
+	}
+
 	/**
 	 * Determine if the current level meets the minimum *severity* level
 	 *
