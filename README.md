@@ -95,7 +95,7 @@ class. Here's how to use the Logger class from your code.
 ```php
 $logger = new \WP_Debug_Logger\Logger();
 $logger->error('The SQL query returned zero rows');
-````
+```
 
 it's recommended that you replace fully namespaced class names with an
 import at the top of your file.
@@ -107,7 +107,7 @@ use WP_Debug_Logger\Logger;
 
 $logger = new Logger();
 $logger->error('The SQL query returned zero rows');
-````
+```
 
 ### Static Log Methods
 
@@ -122,7 +122,7 @@ use WP_Debug_Logger\Log;
 // ... your code ...
 
 Log::error('The SQL query returned zero rows');
-````
+```
 
 Here's the list of all static methods for the Log class
 
@@ -135,7 +135,7 @@ Log::warning( 'This is a warning message' );
 Log::notice( 'This is a notice message' );
 Log::info( 'This is a info message' );
 Log::debug( 'This is a debug message' );
-````
+```
 
 ### Passing Data to the Log
 
