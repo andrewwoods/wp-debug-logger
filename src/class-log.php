@@ -117,14 +117,15 @@ class Log {
 	/**
 	 * Write the codes and messages in a WP_Error object to the log using the specified level
 	 *
+	 * @param string $level
 	 * @param string $message
 	 * @param WP_Error $wp_error
 	 *
 	 * @return void
 	 */
-	public static function wp_error( string $message, WP_Error $wp_error ) {
+	public static function wp_error( string $level, string $message, WP_Error $wp_error ) {
 		$logger = new Logger();
 
-		$logger->log_wp_error( 'debug', $message, $wp_error );
+		$logger->log_wp_error( $level, $message, $wp_error );
 	}
 }
