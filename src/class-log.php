@@ -2,6 +2,7 @@
 
 namespace WP_Debug_Logger;
 
+use Psr\Log\InvalidArgumentException;
 use WP_Error;
 
 /**
@@ -122,9 +123,15 @@ class Log {
 	 * @param WP_Error $wp_error
 	 *
 	 * @return void
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public static function wp_error( string $level, string $message, WP_Error $wp_error ) {
 		$logger = new Logger();
+
+		if ( ! $logger->has_level( $level ) ) {
+			throw new InvalidArgumentException( "The level your requested '{$level}' is not valid" );
+		}
 
 		$logger->log_wp_error( $level, $message, $wp_error );
 	}

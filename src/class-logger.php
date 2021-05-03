@@ -19,6 +19,17 @@ class Logger implements \Psr\Log\LoggerInterface {
 	];
 
 	/**
+	 * Determine if a level exists
+	 *
+	 * @param string $level
+	 *
+	 * @return bool
+	 */
+	public function has_level( string $level ) : bool {
+		return isset( $this->levels[ $level ] );
+	}
+
+	/**
 	 * Interpolates context values into the message placeholders.
 	 *
 	 * @param string $message The content for the debug log.
