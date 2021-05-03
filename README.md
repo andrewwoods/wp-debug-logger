@@ -13,9 +13,10 @@ compliant, a PHP standard which Monolog also uses.
 
 
 
+
 ## Version
 
-The current version is 0.2.0. This project uses [semantic versioning](http://semver.org).
+The current version is 0.3.0. This project uses [semantic versioning](http://semver.org).
 
 
 

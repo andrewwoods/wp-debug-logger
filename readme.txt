@@ -4,7 +4,7 @@ Tags: psr-3, logs, logging, debug, monolog, dev, development
 Requires at least: 5.7
 Tested up to: 5.7
 Requires PHP: 7.4
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,11 +89,19 @@ No screenshots yet.
 
 == Upgrade Notice ==
 
-No notices yet.
+= 0.3.0 =
+
+Gain the ability to log WP_Error objects
 
 
 
 == Changelog ==
+
+= 0.3.0 =
+
+* Add the ability to log WP_Error objects
+    - Add `Log::wp_error()` and its corresponding `Logger->log_wp_error` method
+    - Add method Logger->has_level() to ensure a level exists
 
 = 0.2.0 =
 

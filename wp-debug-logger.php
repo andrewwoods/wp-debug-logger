@@ -7,7 +7,7 @@
  * Author URI:      https://andrewwoods.net
  * Text Domain:     wp-debug-logger
  * Domain Path:     /languages
- * Version:         0.2.0
+ * Version:         0.3.0
  *
  * @package         Wp_Debug_Logger
  */
